@@ -5,4 +5,4 @@ use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/jobs', [JobController::class, 'index']);
+Route::resource('/jobs', JobController::class);

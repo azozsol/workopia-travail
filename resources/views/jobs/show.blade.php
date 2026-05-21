@@ -1,3 +1,3 @@
 <x-layout>
-    <h1>Show Job</h1>
+    <h1 class="text-2xl">{{ $job->description }}</h1>
 </x-layout>
