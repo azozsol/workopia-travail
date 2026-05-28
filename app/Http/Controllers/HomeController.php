@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        $jobs = Job::All();
-        return view('jobs.index')->with('jobs', $jobs);
+        $jobs = Job::latest()->limit(3)->get();
+        return view('pages.index')->with('jobs', $jobs);
     }
 }
