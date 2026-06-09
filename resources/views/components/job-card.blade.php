@@ -2,7 +2,9 @@
 
 <div class="rounded-lg shadow-md bg-white p-4">
     <div class="flex items-center space-between gap-4">
-        <img src="/images/{{ $job->company_logo }}" alt="{{ $job->company_name }}" class="w-14" />
+        @if ($job->company_logo)
+            <img src="/storage/{{ $job->company_logo }}" alt="{{ $job->company_name }}" class="w-14" />
+        @endif
         <div>
             <h2 class="text-xl font-semibold">
                 {{ $job->title }}
@@ -14,7 +16,12 @@
         {{ Str::limit($job->description, 150) }}
     </p>
     <ul class="my-4 bg-gray-100 p-4 rounded">
-        <li class="mb-2"><strong>Salary:</strong> ${{ number_format($job->salary) }}</li>
+        @if ($job->tags)
+            <li class="mb-2"><strong>
+                    Salary:
+                </strong> ${{ number_format($job->salary) }}
+            </li>
+        @endif
         <li class="mb-2">
             <strong>Location:</strong>{{ $job->city }}, {{ $job->state }}
             @if ($job->remote)
